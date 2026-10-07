@@ -1,0 +1,25 @@
+{
+  "run_id": "rts-transformation-20260930",
+  "previous_run_id": "local-completion-20260930",
+  "step": "staged: representative real-time skirmish verified",
+  "scope": "The Two Fords: Gondor versus Saruman; retained weekly roster and networking",
+  "last_command": "Final lint/typecheck/build, 38 affected tests, 5 RTS browser flows and optimized 40/100/200-unit performance passed",
+  "completed": [
+    "100ms deterministic paid economy and physical deliveries/construction/siege ammunition",
+    "direct mouse and keyboard command, minimap, hotkeys, placement, queues and versioned saves",
+    "local economic AI, paid victory and passive-player defeat",
+    "original siege/forest assets, directional actions, fog and contextual HUD",
+    "891 aggregate tests then 38 final affected tests; 21 distinct browser cases; 1829 static art checks",
+    "100/200-unit p95 frame16.7ms with original performance budgets retained",
+    "authoritative timing amendment, synchronized PDF, before/after and failed-stress evidence"
+  ],
+  "pending": [
+    "53 remaining RTS profiles and unported powers/economies",
+    "RTS authenticated multiplayer, reconnect and remote certification",
+    "capture/rescue initiation, equipment/perk progression, naval and diplomacy conversion",
+    "physical-device, Safari, assistive-technology and independent balance testing"
+  ],
+  "evidence": "docs/reports/2026-09-30-rts-transformation.md",
+  "policy": "No commit or push. Human uses make git.",
+  "next_action": "Review staged representative slice and play ?mode=rts; remaining rollout stays explicitly unchecked."
+}

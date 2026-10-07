@@ -1,0 +1,96 @@
+# 🧠 docs/tracking/context.md — shared project context pack
+
+> **This file is the single place for project-specific overrides.**
+> All vendor entry points (`CLAUDE.md`, `GEMINI.md`, `CONVENTIONS.md`,
+> `.github/copilot-instructions.md`, etc.) are invited to reference this file
+> so context stays in sync without editing every vendor file.
+
+---
+
+## Project identity
+
+- **Name**: Silmarillion strategy game browser alpha
+- **One-liner**: Isometric faction strategy game design — distinctive production economies and one fixed recreatable hero per faction, shown through expansive painted landscapes and intimate portraits.
+- **Chronology**: Revision 6 spans eras; the roster is a cross-era sandbox, not one canonical historical moment. Scenario geography may include Beleriand and other declared regions.
+- **Primary language**: TypeScript (Phaser + Vite browser runtime). Python 3 stdlib + Pillow/ReportLab retain design-document build tooling.
+- **Repo URL**: https://github.com/metaphy6/silmarillion
+
+## Key paths
+
+| Concern | Path |
+|---|---|
+| Master rulebook | `AGENTS.md` |
+| Project plan | `docs/planning/ROADMAP.md` |
+| Tracking log | `docs/tracking/tracking.csv` |
+| Skills library | `.agents/skills/` |
+| Ops scripts | `xops/` |
+| Current design report | `docs/design/silmarillion-game-report.md` |
+| Hero balance roster | `docs/design/hero-balance-roster.md` / `hero-balance-roster.json` |
+| Shared design entry skill | `.agents/skills/silmarillion-art-direction/SKILL.md` |
+| Visual/narrative/UI resource package | `docs/design/art-direction/README.md` |
+| Conceptual visual examples | `docs/design/art-direction/gallery/index.html` |
+| Browser runtime | `src/simulation/`, `src/render/`, `src/ui/`, `src/network/`, `src/persistence/` |
+| Runtime guide / evidence | `docs/guides/GAME_RUNTIME.md` / `docs/reports/runtime/VALIDATION.md` |
+| Build scripts | `build_hero_roster.py`, `build_report.py` |
+
+## Active context (update as the project evolves)
+
+Living-world presentation now includes verified own-route walking, species-aware staffed work, birds/mist and bounded observed action feedback with reduced motion. Current compatibility is `r6-sim-10-1ba24d66-protocol-2-save-2`; older saves require the previous build, with no migration. See `docs/reports/2026-09-30-living-world.md`. The roadmap sequences seven remaining batches; the source audit finds 103 routed powers and seven unrouted, without claiming full passive/target completion. Managed authorization and real remote verification remain unresolved.
+
+<!-- What is the team / agent working on right now?
+     One short paragraph is enough. Agents read this to orient fast. -->
+
+Revision 6 of the design report and the 55-profile hero roster are current. The older fifty hero profiles (everything except the five named Istari) still need an offensive-capability redesign — see `docs/design/silmarillion-game-report.md`. Runtime and browser checks now exist; current evidence is in `docs/reports/runtime/VALIDATION.md`. These checks do not establish competitive balance.
+
+The browser alpha runs with `npm ci` then `npm run dev`. All 55 profiles are selectable. Physical combat, queues, transport, care, habitats, civilian conservation and many dedicated powers now have runtime coverage; the exact source-qualified ledger is `docs/design/runtime-ability-notes.md`. The full request remains unfinished: adopted powers and passives still need completion, ordinary tuning is provisional, some figures remain procedural and landscape alignment needs correction. Original 54 identity portraits, 16 building studies and a 16-archetype painted figure atlas are integrated, plus three situated consequential dialogue scenes. See `docs/guides/GAME_RUNTIME.md` and current validation evidence.
+
+For planning, art, narrative, maps, assets, UI/UX implementation, review and
+verification, load
+[`silmarillion-art-direction`](../../.agents/skills/silmarillion-art-direction/SKILL.md)
+and its applicable resources. That package owns shared visual/interaction
+rules; its [source hierarchy](../design/art-direction/source-authority.md)
+distinguishes current gameplay, lore, interpretation, history and new design
+decisions. Phaser + TypeScript + Vite is the selected runtime. Static gallery studies
+do not prove playability, balance or full accessibility.
+
+## Project-specific conventions
+
+<!-- Any rules that apply *only* to this project and are NOT already in AGENTS.md.
+     E.g.: "All public APIs must have OpenAPI annotations."
+           "Use pydantic v2 models everywhere — no plain dicts."
+           "Commit messages must reference a JIRA ticket: PROJ-123." -->
+
+- Generated deliverables (`silmarillion-game-design-report.pdf`, `hero-balance-roster.json`) and hero-kit data inputs (`hero-kits-*.json`) live at the repo root, not under `docs/`. Only hand-authored design documentation moved into `docs/design/`.
+- Don't hand-edit `docs/design/hero-balance-roster.md` — it's generated by `python3 build_hero_roster.py` from the `hero-kits-*.json` files. Edit the source kit JSON or `build_hero_roster.py` instead, then regenerate.
+- `docs/design/iterations/` and the `reading-*.md` notes under `docs/design/reading-notes/` are frozen historical records — file **paths** get updated when the layout changes, but their prose/wording is preserved as originally written, including known-stale internal references.
+- `silmarillion.pdf` and `silmarillion-extracted-text.txt` are vendored reference material (the source novel), kept at root and never redistributed or quoted at length in generated docs.
+
+## Out-of-scope / do not touch
+
+<!-- List directories, files, or systems agents should treat as read-only.
+     E.g.: "Never edit vendor/ — it is a git subtree." -->
+
+- `silmarillion.pdf` / `silmarillion-extracted-text.txt` — vendored copyrighted source material; reference only, never edit or re-export.
+- `docs/design/iterations/` — archived report revisions; superseded content is preserved verbatim, not corrected.
+
+## External service dependencies
+
+<!-- List services this project calls, with the env var that holds each key.
+     Do NOT include actual keys here — only the var names. -->
+
+Optional multiplayer uses Metered managed signaling and TURN auto-injection through `VITE_METERED_PUBLISHABLE_KEY`; this is public browser configuration. Local play needs no key. Never embed private API credentials or permanent TURN secrets. Provider-enforced scoped short-lived authorization remains unresolved; read `docs/guides/MULTIPLAYER.md`. Host simulation stays in a player browser; deployment serves only `dist/`.
+
+## Agent quick-reference
+
+```bash
+make help           # all targets
+make git.dry        # preview pending commits (read-only)
+make git            # commit + push (human runs this)
+make track.add ACTION=note SUMMARY="..."   # append tracking row
+```
+
+### Extended playtest — 2026-09-30
+
+Run `playtest-20260930` repaired interrupted equipment integration, exposed missing tool research/UI routes, protected concealed formations and retained survey references, hardened snapshot/seat recovery, and fixed keyboard focus and ranged review. All 55 profiles passed ordinary twelve-week Chromium campaigns; 165 seeded simulation campaigns and three peaceful 64-week economies resolved 3,190 weeks. Final local gates: 626 unit tests, typecheck/lint/build, 100 distinct Chromium cases, Firefox local creation/reload and 1,700 static art checks passed. Actual 96×96/400-company renderer p95 was 33.4ms. Details and explicit limitations: `docs/reports/2026-09-30-extended-playtest.md`.
+
+Next implementation work remains forest/dream/council integration, Vairë/Avari support, source-qualified power/passive completion and terrain/painting alignment. Managed room authorization and scoped expiring TURN credentials remain external unresolved dependencies. Do not infer complete gameplay or remote reliability from this hardening pass.
